@@ -1,6 +1,5 @@
 package com.example.tictactoe
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -26,6 +25,7 @@ class TicTacViewModels: ViewModel() {
             return
         }
 
+        //Add Cross or Circle to the possible key
         if (state.boxMap[key] == BoxType.NONE && state.result == null && state.playerTurn == PlayerTurn.CROSS) {
             updateMap[key] = BoxType.CROSS
 
@@ -43,9 +43,8 @@ class TicTacViewModels: ViewModel() {
             )
         }
         checkResult()
+
         stopNextTurn()
-        Log.d("result","The Map: ${state.boxMap}")
-        Log.d("result", "Result is: ${state.result} and wintype is: ${state.winType}")
     }
     private fun checkResult() {
         //ROW CHECK
